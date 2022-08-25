@@ -19,10 +19,13 @@ def search_page():
     Вывод постов по подстроке
     """
     key_search = request.args.get('s', '')
+    logging.info('Выполняю поиск')
     try:
         posts = search_post(key_search)
     except FileNotFoundError:
+        logging.error('Файл не найден')
         return 'Файл не найден'
     except JSONDecodeError:
+        logging.error('Не json файл')
         return 'Не json файл'
     return render_template('post_list.html', items=posts)

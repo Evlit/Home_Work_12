@@ -24,7 +24,7 @@ def search_post(search_str):
 
 def picture_save(picture):
     filename = picture.filename
-    path = f'./uploads/images{filename}'
+    path = f'./uploads/images/{filename}'
     picture.save(path)
     return path
 
